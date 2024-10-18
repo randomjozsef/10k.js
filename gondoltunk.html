@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gondol</title>
+    <script>
+        var gondolt = Math.floor(Math.random() * 100 + 1);
+        var tippSzam = 0;
+
+        function tippelt() {
+            tipp = document.getElementById("tippje").value;
+            //tippSzam = tippSzam + 1;
+            tippSzam++
+            document.getElementById("beker").innerHTML = tippSzam + 1 + " tipped:"
+
+            if (tipp < gondolt) {
+                document.getElementById("valasz").innerHTML = "Kicsi"
+            }
+            if (tipp > gondolt) {
+                document.getElementById("valasz").innerHTML = "Nagy"
+            }
+            if (tipp == gondolt) {
+
+                if (tippSzam > 7) {
+                    hiba = "<br> túl sok a tipped"
+                } else {
+                    hiba = ""
+                }
+
+                document.getElementById("valasz").innerHTML = tippSzam + " Lépésből találtad el"
+                x = document.getElementById("kerdes")
+                x.style.display = "block"
+            }
+        }
+        function igen() {
+            gondolt = Math.floor(Math.random() * 100 + 1);
+            tippSzam = 0;
+
+            x = document.getElementById("kerdes")
+            x.style.display = "none"
+
+            document.getElementById("valasz").innerHTML = ""
+            document.getElementById("tippje").value = ""
+
+                document.getElementById("beker").innerHTML= "1.tipped:"
+
+
+        }
+
+        function nem() {
+            document.write("<h1>Köszönöm a játékot!</h1>")
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Gondoltam egy számot 1 - 100 között</h1>
+    <h2>Találd ki!</h2>
+    <div>
+        <div id="beker">1. Tipped:</div><input id="tippje"> <button onclick="tippelt();">Tippelek</button>
+    </div>
+    <div id="valasz"></div>
+    <script>
+        //document.getElementById("valasz").innerHTML = gondolt;
+    </script>
+
+    <div id="kerdes">
+        Játszol még velem?
+        <button onclick="igen()">Igen</button>
+        <button onclick="nem()">Nem</button>
+    </div>
+
+    <script>
+        x = document.getElementById("kerdes");
+        x.style.display = "none";
+    </script>
+
+</body>
+
+</html>
